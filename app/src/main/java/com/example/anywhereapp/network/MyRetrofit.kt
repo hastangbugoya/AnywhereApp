@@ -1,6 +1,7 @@
 package com.example.anywhereapp.network
 
-import com.example.myanywhereapplication.simpsons.model.Simpsons
+import com.example.anywhereapp.BuildConfig
+import com.example.myanywhereapplication.simpsons.model.APIResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,7 +10,7 @@ import retrofit2.http.GET
 class MyRetrofit {
     companion object{
         fun MakeRetrofit() : Retrofit = Retrofit.Builder()
-            .baseUrl("http://api.duckduckgo.com/")
+            .baseUrl(BuildConfig.BASE_URL) //"http://api.duckduckgo.com/"
             .addConverterFactory(GsonConverterFactory.create()).build()
 
         fun getService() : RetrofitService = MakeRetrofit()
@@ -18,6 +19,7 @@ class MyRetrofit {
 }
 
 interface RetrofitService {
-    @GET("?q=simpsons+characters&format=json")
-    suspend fun getSimpsons() : Response<Simpsons>
+//    @GET("?q=simpsons+characters&format=json")
+    @GET(BuildConfig.END_POINT)
+    suspend fun getCharacters() : Response<APIResponse>
 }

@@ -3,7 +3,7 @@ package com.example.myanywhereapplication.simpsons.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Simpsons(
+data class APIResponse(
     @SerializedName("Abstract")
     var `abstract`: String? = "",
     @SerializedName("AbstractSource")
@@ -41,7 +41,7 @@ data class Simpsons(
     @SerializedName("Redirect")
     var redirect: String? = "",
     @SerializedName("RelatedTopics")
-    var relatedTopicSimpsons: List<RelatedTopicSimpsons>? = listOf(),
+    var relatedTopicSimpsons: List<RelatedTopic>? = listOf(),
     @SerializedName("Results")
     var results: List<Any>? = listOf(),
     @SerializedName("Type")

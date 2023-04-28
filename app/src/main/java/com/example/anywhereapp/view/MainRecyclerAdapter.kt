@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anywhereapp.databinding.TextItemBinding
-import com.example.myanywhereapplication.simpsons.model.RelatedTopicSimpsons
+import com.example.myanywhereapplication.simpsons.model.RelatedTopic
 
-class SimpsonsAdapter(val myContext: Context) :
-    RecyclerView.Adapter<SimpsonsAdapter.SimpsonsViewholder>() {
-    private var myList = listOf<RelatedTopicSimpsons>()
+class MainRecyclerAdapter(val myContext: Context) :
+    RecyclerView.Adapter<MainRecyclerAdapter.SimpsonsViewholder>() {
+    private var myList = listOf<RelatedTopic>()
 
     class SimpsonsViewholder(var binding: TextItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -44,7 +44,7 @@ class SimpsonsAdapter(val myContext: Context) :
 
     override fun getItemCount(): Int = myList.size
 
-    fun setData(newList: List<RelatedTopicSimpsons>) {
+    fun setData(newList: List<RelatedTopic>) {
         myList = newList
         notifyDataSetChanged()
     }

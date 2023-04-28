@@ -4,21 +4,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.anywhereapp.network.MyRetrofit
-import com.example.myanywhereapplication.simpsons.model.RelatedTopicSimpsons
+import com.example.myanywhereapplication.simpsons.model.RelatedTopic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 
-class AnywhereSimpsonsViewModel : ViewModel() {
-    val dataList = MutableLiveData<List<RelatedTopicSimpsons>?>(listOf())
+class AnywhereViewModel : ViewModel() {
+    val dataList = MutableLiveData<List<RelatedTopic>?>(listOf())
 
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
             dataList.postValue(
                 withTimeoutOrNull(5000) {
                     withContext(Dispatchers.IO) {
-                        MyRetrofit.getService().getSimpsons().body()?.relatedTopicSimpsons
+                        MyRetrofit.getService().getCharacters().body()?.relatedTopicSimpsons
                     }
                 }
             )

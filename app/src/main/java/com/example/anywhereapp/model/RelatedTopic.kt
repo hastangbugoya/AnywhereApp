@@ -3,7 +3,7 @@ package com.example.myanywhereapplication.simpsons.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RelatedTopicSimpsons(
+data class RelatedTopic(
     @SerializedName("FirstURL")
     var firstURL: String? = "",
     @SerializedName("Icon")

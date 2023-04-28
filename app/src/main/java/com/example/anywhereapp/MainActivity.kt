@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import com.example.anywhereapp.databinding.ActivityMainBinding
-import com.example.anywhereapp.view.SimpsonsAdapter
-import com.example.anywhereapp.viewmodel.AnywhereSimpsonsViewModel
+import com.example.anywhereapp.view.MainRecyclerAdapter
+import com.example.anywhereapp.viewmodel.AnywhereViewModel
 
 class MainActivity : AppCompatActivity() {
-    private val myViewModel: AnywhereSimpsonsViewModel by viewModels()
+    private val myViewModel: AnywhereViewModel by viewModels()
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(LayoutInflater.from(this))
     }
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val myAdapter = SimpsonsAdapter(this)
+        val myAdapter = MainRecyclerAdapter(this)
 
         binding.mainRecycler.adapter = myAdapter
 
@@ -26,11 +26,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         myViewModel.loadData()
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 }

@@ -1,6 +1,6 @@
 package com.example.anywhereapp.network
 
-import com.example.myanywhereapplication.simpsons.model.Simpsons
+import com.example.myanywhereapplication.simpsons.model.APIResponse
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -17,7 +17,7 @@ class MyRetrofitTest {
     @Test
     fun `test Retrofit service`() {
         runBlocking {
-            val response: Response<Simpsons> = MyRetrofit.getService().getSimpsons()
+            val response: Response<APIResponse> = MyRetrofit.getService().getCharacters()
             assert(response.isSuccessful)
             assertNotNull(response.body())
         }

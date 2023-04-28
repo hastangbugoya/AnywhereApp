@@ -13,7 +13,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        buildConfigField "String", "BASE_URL", "\"http://api.duckduckgo.com/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -23,6 +23,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+    productFlavors {
+        the_simpsons {
+            dimension "version"
+            applicationId "com.example.anywhereapp.thesimpsons"
+            versionName "The Simpsons"
+            manifestPlaceholders = [appLabel: "The Simpsons"]
+            buildConfigField "String", "END_POINT", "\"?q=simpsons+characters&format=json\""
+        }
+        the_wire {
+            dimension "version"
+            applicationId "com.example.anywhereapp.thewire"
+            versionName "The Wire"
+            manifestPlaceholders = [appLabel: "The Wire"]
+            buildConfigField "String", "END_POINT", "\"?q=the+wire+characters&format=json\""
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
