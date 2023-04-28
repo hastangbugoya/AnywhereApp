@@ -3,7 +3,6 @@ package com.example.anywhereapp
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.filterText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                Log.d("Meow","filter")
                 if (!binding.filterText.text.trim().isNullOrEmpty())
                     myAdapter.setData(myViewModel.filterList(binding.filterText.text.trim().toString()))
                 else
