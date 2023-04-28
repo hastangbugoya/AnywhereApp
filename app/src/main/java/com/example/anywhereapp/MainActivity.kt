@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import com.example.anywhereapp.databinding.ActivityMainBinding
 import com.example.anywhereapp.view.SimpsonsAdapter
-import com.example.anywhereapp.viewmodel.AnywhereViewModel
+import com.example.anywhereapp.viewmodel.AnywhereSimpsonsViewModel
 
 class MainActivity : AppCompatActivity() {
-    val myViewModel: AnywhereViewModel by viewModels()
+    val myViewModel: AnywhereSimpsonsViewModel by viewModels()
     val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(LayoutInflater.from(this))
     }

@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.anywhereapp.databinding.TextItemBinding
 import com.example.myanywhereapplication.simpsons.model.RelatedTopicSimpsons
 
-class SimpsonsAdapter(val myContext: Context): RecyclerView.Adapter<SimpsonsAdapter.SimpsonsViewholder>() {
+class SimpsonsAdapter(val myContext: Context) :
+    RecyclerView.Adapter<SimpsonsAdapter.SimpsonsViewholder>() {
     private var myList = listOf<RelatedTopicSimpsons>()
 
     class SimpsonsViewholder(var binding: TextItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -23,22 +24,27 @@ class SimpsonsAdapter(val myContext: Context): RecyclerView.Adapter<SimpsonsAdap
         holder.binding.apply {
             characterName.text = myList?.get(position)?.text?.substringBefore("-") ?: ""
             characterName.setOnClickListener() {
-                val intent = Intent(myContext, CharacterDetailsActivity::class.java)
-                intent.putExtra("image_url", if(!myList.get(position).icon?.uRL.isNullOrEmpty()) {
-                    "https://duckduckgo.com" + myList.get(position).icon?.uRL
-                } else
-                { null }
-                )
-                intent.putExtra("title_text", characterName.text)
-                intent.putExtra("details_text", myList.get(position).text?.substringAfter("-")?.trim())
-                startActivity(myContext,intent,null)
+                Intent(myContext, CharacterDetailsActivity::class.java).apply {
+                    putExtra(
+                        "image_url", if (!myList.get(position).icon?.uRL.isNullOrEmpty()) {
+                            "https://duckduckgo.com" + myList.get(position).icon?.uRL
+                        } else {
+                            null
+                        }
+                    )
+                    putExtra("title_text", characterName.text)
+                    putExtra("details_text", myList.get(position).text?.substringAfter("-")?.trim())
+
+                }.also {
+                    startActivity(myContext, it, null)
+                }
             }
         }
     }
 
     override fun getItemCount(): Int = myList.size
 
-    fun setData(newList : List<RelatedTopicSimpsons>){
+    fun setData(newList: List<RelatedTopicSimpsons>) {
         myList = newList
         notifyDataSetChanged()
     }

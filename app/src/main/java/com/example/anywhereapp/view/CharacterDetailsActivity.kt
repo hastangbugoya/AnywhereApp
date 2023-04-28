@@ -12,7 +12,6 @@ class CharacterDetailsActivity : AppCompatActivity() {
     val binding: ActivityCharacterDetailsBinding by lazy {
         ActivityCharacterDetailsBinding.inflate(LayoutInflater.from(this))
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -24,8 +23,6 @@ class CharacterDetailsActivity : AppCompatActivity() {
             .load(imageURL)
             .placeholder(R.drawable.ic_android_black_24dp)
             .into(binding.characterImage)
-
         binding.characterImgUrl.text = imageURL
-
     }
 }
