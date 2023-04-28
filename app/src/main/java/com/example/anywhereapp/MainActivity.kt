@@ -9,8 +9,8 @@ import com.example.anywhereapp.view.SimpsonsAdapter
 import com.example.anywhereapp.viewmodel.AnywhereSimpsonsViewModel
 
 class MainActivity : AppCompatActivity() {
-    val myViewModel: AnywhereSimpsonsViewModel by viewModels()
-    val binding: ActivityMainBinding by lazy {
+    private val myViewModel: AnywhereSimpsonsViewModel by viewModels()
+    private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(LayoutInflater.from(this))
     }
     override fun onCreate(savedInstanceState: Bundle?) {
