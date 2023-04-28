@@ -6,29 +6,29 @@ import androidx.lifecycle.viewModelScope
 import com.example.anywhereapp.network.MyRetrofit
 import com.example.myanywhereapplication.simpsons.model.RelatedTopic
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 
 class AnywhereViewModel : ViewModel() {
     val dataList = MutableLiveData<List<RelatedTopic>?>(listOf())
-    var filteredList = listOf<RelatedTopic>()
+
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
             dataList.postValue(
                 withTimeoutOrNull(5000) {
-                    withContext(Dispatchers.IO) {
+                    async {
                         MyRetrofit.getService().getCharacters().body()?.relatedTopicSimpsons
-                    }
+                    }.await()
                 }
             )
         }
     }
 
     fun filterList(filter: String): List<RelatedTopic> {
-        filteredList = dataList.value?.filter {
+        return dataList.value?.filter {
             it.text?.contains(filter, true) ?: false
         } ?: listOf()
-        return filteredList
     }
 }

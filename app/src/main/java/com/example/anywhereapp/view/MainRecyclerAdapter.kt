@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.anywhereapp.databinding.TextItemBinding
 import com.example.myanywhereapplication.simpsons.model.RelatedTopic
 
-class MainRecyclerAdapter(val myContext: Context) :
-    RecyclerView.Adapter<MainRecyclerAdapter.SimpsonsViewholder>() {
+class MainRecyclerAdapter(val myContext: Context) : RecyclerView.Adapter<MainRecyclerAdapter.SimpsonsViewholder>() {
     private var myList = listOf<RelatedTopic>()
 
     class SimpsonsViewholder(var binding: TextItemBinding) : RecyclerView.ViewHolder(binding.root)

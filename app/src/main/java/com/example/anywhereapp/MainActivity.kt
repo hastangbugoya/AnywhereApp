@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         }
+
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

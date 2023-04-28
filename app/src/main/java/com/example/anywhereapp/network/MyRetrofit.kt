@@ -10,7 +10,7 @@ import retrofit2.http.GET
 class MyRetrofit {
     companion object{
         fun MakeRetrofit() : Retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL) //"http://api.duckduckgo.com/"
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
 
         fun getService() : RetrofitService = MakeRetrofit()
@@ -19,7 +19,6 @@ class MyRetrofit {
 }
 
 interface RetrofitService {
-//    @GET("?q=simpsons+characters&format=json")
     @GET(BuildConfig.END_POINT)
     suspend fun getCharacters() : Response<APIResponse>
 }
