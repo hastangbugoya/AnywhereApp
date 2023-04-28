@@ -17,3 +17,4 @@ uses
   - Cardviews
   - ViewModel
   - LiveData
+  - Unit test
