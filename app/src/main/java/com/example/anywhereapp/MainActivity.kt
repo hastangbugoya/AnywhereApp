@@ -1,5 +1,6 @@
 package com.example.anywhereapp
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,11 +16,12 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(LayoutInflater.from(this))
     }
+    val myAdapter: MainRecyclerAdapter by lazy {
+        MainRecyclerAdapter(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        val myAdapter = MainRecyclerAdapter(this)
 
         binding.mainRecycler.adapter = myAdapter
 
@@ -43,5 +45,10 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.mainRecycler.adapter = myAdapter
     }
 }

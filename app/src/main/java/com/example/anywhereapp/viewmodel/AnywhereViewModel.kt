@@ -12,6 +12,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 
 class AnywhereViewModel : ViewModel() {
     val dataList = MutableLiveData<List<RelatedTopic>?>(listOf())
+    var filteredList = listOf<RelatedTopic>()
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
             dataList.postValue(
@@ -25,8 +26,9 @@ class AnywhereViewModel : ViewModel() {
     }
 
     fun filterList(filter: String): List<RelatedTopic> {
-        return dataList.value?.filter {
+        filteredList = dataList.value?.filter {
             it.text?.contains(filter, true) ?: false
         } ?: listOf()
+        return filteredList
     }
 }
