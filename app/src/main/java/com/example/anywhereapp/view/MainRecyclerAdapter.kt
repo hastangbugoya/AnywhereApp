@@ -48,4 +48,5 @@ class MainRecyclerAdapter(val myContext: Context) :
         myList = newList
         notifyDataSetChanged()
     }
+
 }
