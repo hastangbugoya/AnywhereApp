@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.example.anywhereapp.databinding.ActivityMainBinding
 import com.example.anywhereapp.view.MainRecyclerAdapter
 import com.example.anywhereapp.viewmodel.AnywhereViewModel
@@ -19,11 +21,12 @@ class MainActivity : AppCompatActivity() {
         MainRecyclerAdapter(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
+        val snapper = LinearSnapHelper()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         binding.mainRecycler.adapter = myAdapter
-
+        snapper.attachToRecyclerView(binding.mainRecycler)
         myViewModel.dataList.observe(this) {
             myAdapter.setData(it ?: listOf())
         }
@@ -51,3 +54,29 @@ class MainActivity : AppCompatActivity() {
         binding.mainRecycler.adapter = myAdapter
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

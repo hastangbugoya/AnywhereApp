@@ -26,3 +26,23 @@ class CharacterDetailsActivity : AppCompatActivity() {
         binding.characterImgUrl.text = imageURL
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

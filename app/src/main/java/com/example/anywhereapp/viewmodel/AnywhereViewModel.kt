@@ -32,3 +32,25 @@ class AnywhereViewModel : ViewModel() {
         } ?: listOf()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
